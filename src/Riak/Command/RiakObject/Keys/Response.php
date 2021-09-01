@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak\Command\Object\Keys;
+namespace Basho\Riak\Command\RiakObject\Keys;
 
 use Basho\Riak\Location;
 

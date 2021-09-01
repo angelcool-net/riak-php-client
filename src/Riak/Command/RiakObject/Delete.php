@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak\Command\Object;
+namespace Basho\Riak\Command\RiakObject;
 
 use Basho\Riak\Command;
 use Basho\Riak\CommandInterface;
@@ -10,7 +10,7 @@ use Basho\Riak\CommandInterface;
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class Delete extends Command\Object implements CommandInterface
+class Delete extends Command\RiakObject implements CommandInterface
 {
     protected $method = 'DELETE';
 

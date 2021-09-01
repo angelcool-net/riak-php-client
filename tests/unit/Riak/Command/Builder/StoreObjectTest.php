@@ -24,8 +24,8 @@ class StoreObjectTest extends TestCase
         $builder->buildLocation('some_key', 'some_bucket');
         $command = $builder->build();
 
-        $this->assertInstanceOf('Basho\Riak\Command\Object\Store', $command);
-        $this->assertInstanceOf('Basho\Riak\Object', $command->getObject());
+        $this->assertInstanceOf('Basho\Riak\Command\RiakObject\Store', $command);
+        $this->assertInstanceOf('Basho\Riak\Object', $command->getRiakObject());
         $this->assertInstanceOf('Basho\Riak\Bucket', $command->getBucket());
         $this->assertInstanceOf('Basho\Riak\Location', $command->getLocation());
         $this->assertEquals('some_bucket', $command->getBucket()->getName());
@@ -44,7 +44,7 @@ class StoreObjectTest extends TestCase
         $builder->buildBucket('some_bucket');
         $command = $builder->build();
 
-        $this->assertInstanceOf('Basho\Riak\Command\Object\Store', $command);
+        $this->assertInstanceOf('Basho\Riak\Command\RiakObject\Store', $command);
         $this->assertEquals('some_bucket', $command->getBucket()->getName());
     }
 
@@ -84,15 +84,15 @@ class StoreObjectTest extends TestCase
         $builder->buildBucket('some_bucket');
         $command = $builder->build();
 
-        $this->assertInstanceOf('Basho\Riak\Command\Object\Store', $command);
+        $this->assertInstanceOf('Basho\Riak\Command\RiakObject\Store', $command);
 
-        $this->assertArrayHasKey('My-Header', $command->getObject()->getMetaData());
-        $this->assertEquals($command->getObject()->getMetaData()['My-Header'], 'cats');
+        $this->assertArrayHasKey('My-Header', $command->getRiakObject()->getMetaData());
+        $this->assertEquals($command->getRiakObject()->getMetaData()['My-Header'], 'cats');
 
-        $this->assertArrayHasKey('foo_bin', $command->getObject()->getIndexes());
-        $this->assertCount(2, $command->getObject()->getIndex('foo_bin'));
+        $this->assertArrayHasKey('foo_bin', $command->getRiakObject()->getIndexes());
+        $this->assertCount(2, $command->getRiakObject()->getIndex('foo_bin'));
 
-        $this->assertArrayHasKey('foo_int', $command->getObject()->getIndexes());
-        $this->assertCount(2, $command->getObject()->getIndex('foo_int'));
+        $this->assertArrayHasKey('foo_int', $command->getRiakObject()->getIndexes());
+        $this->assertCount(2, $command->getRiakObject()->getIndex('foo_int'));
     }
 }

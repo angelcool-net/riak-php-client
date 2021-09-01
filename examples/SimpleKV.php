@@ -33,7 +33,7 @@ $command = (new Command\Builder\FetchObject($riak))
 
 $response = $command->execute();
 
-$object = $response->getObject();
+$object = $response->getRiakObject();
 
 $object->getData()->country = 'USA';
 

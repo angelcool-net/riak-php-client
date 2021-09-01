@@ -4,7 +4,7 @@ namespace Basho\Riak\Api\Http\Translator;
 
 use Basho\Riak\Api\Http;
 use Basho\Riak\Command;
-use Basho\Riak\Object as RObject;
+use Basho\Riak\RiakObject as RObject;
 
 class ObjectResponse
 {
@@ -15,7 +15,7 @@ class ObjectResponse
 
     protected $code;
 
-    public function __construct(Command\Object $command, $code)
+    public function __construct(Command\RiakObject $command, $code)
     {
         $this->command = $command;
         $this->code = $code;

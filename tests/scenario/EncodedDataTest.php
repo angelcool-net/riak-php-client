@@ -41,11 +41,11 @@ class EncodedDataTest extends TestCase
         $response = $fetchCommand->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\Object', $response->getObject());
-        $this->assertEquals(static::TEST_CONTENT_TYPE, $response->getObject()->getContentType());
+        $this->assertInstanceOf('Basho\Riak\Object', $response->getRiakObject());
+        $this->assertEquals(static::TEST_CONTENT_TYPE, $response->getRiakObject()->getContentType());
         $this->assertEquals(base64_encode($image), $storeCommand->getEncodedData());
-        $this->assertEquals($storeCommand->getEncodedData(), $response->getObject()->getData());
-        $this->assertEquals(md5($storeCommand->getEncodedData()), md5($response->getObject()->getData()));
+        $this->assertEquals($storeCommand->getEncodedData(), $response->getRiakObject()->getData());
+        $this->assertEquals(md5($storeCommand->getEncodedData()), md5($response->getRiakObject()->getData()));
     }
 
     /**
@@ -73,8 +73,8 @@ class EncodedDataTest extends TestCase
         $response = $fetchCommand->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\Object', $response->getObject());
-        $this->assertEquals($object->getData(), $response->getObject()->getData());
+        $this->assertInstanceOf('Basho\Riak\Object', $response->getRiakObject());
+        $this->assertEquals($object->getData(), $response->getRiakObject()->getData());
     }
 
     /**
@@ -103,11 +103,11 @@ class EncodedDataTest extends TestCase
         $response = $fetchCommand->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\Object', $response->getObject());
-        $this->assertEquals(static::TEST_CONTENT_TYPE, $response->getObject()->getContentType());
+        $this->assertInstanceOf('Basho\Riak\Object', $response->getRiakObject());
+        $this->assertEquals(static::TEST_CONTENT_TYPE, $response->getRiakObject()->getContentType());
 
         // Since Riak doesn't return ContentEncoding used to store the object, we have to access
         // the raw_data retrieved in the response to avoid data corruption from rawurldecode
-        $this->assertEquals($md5, md5($response->getObject()->getRawData()));
+        $this->assertEquals($md5, md5($response->getRiakObject()->getRawData()));
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Basho\Tests\Riak;
 
-use Basho\Riak\Object as RObject;
+use Basho\Riak\RiakObject as RObject;
 use Basho\Tests\TestCase;
 
 /**

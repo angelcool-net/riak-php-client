@@ -25,7 +25,7 @@ use Basho\Riak\Node;
  *
  * $response = $command->execute();
  *
- * $user = $response->getObject();
+ * $user = $response->getRiakObject();
  * </code>
  *
  * @author Christopher Mancini <cmancini at basho d0t com>

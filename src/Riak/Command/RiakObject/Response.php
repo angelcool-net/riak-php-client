@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak\Command\Object;
+namespace Basho\Riak\Command\RiakObject;
 
 use Basho\Riak\Location;
 
@@ -48,7 +48,7 @@ class Response extends \Basho\Riak\Command\Response
     /**
      * @return \Basho\Riak\Object|null
      */
-    public function getObject()
+    public function getRiakObject()
     {
         return !empty($this->objects[0]) ? $this->objects[0] : null;
     }

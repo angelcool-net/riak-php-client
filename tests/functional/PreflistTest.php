@@ -34,10 +34,10 @@ class PreflistTest extends TestCase
                 $this->markTestSkipped('preflists are not supported');
             } else {
                 $this->assertEquals(200, $response->getCode());
-                $this->assertNotEmpty($response->getObject()->getData()->preflist);
-                $this->assertObjectHasAttribute("partition", $response->getObject()->getData()->preflist[0]);
-                $this->assertObjectHasAttribute("node", $response->getObject()->getData()->preflist[0]);
-                $this->assertObjectHasAttribute("primary", $response->getObject()->getData()->preflist[0]);
+                $this->assertNotEmpty($response->getRiakObject()->getData()->preflist);
+                $this->assertObjectHasAttribute("partition", $response->getRiakObject()->getData()->preflist[0]);
+                $this->assertObjectHasAttribute("node", $response->getRiakObject()->getData()->preflist[0]);
+                $this->assertObjectHasAttribute("primary", $response->getRiakObject()->getData()->preflist[0]);
             }
         } catch (\Basho\Riak\Exception $e) {
             $this->markTestSkipped('preflists are not supported');

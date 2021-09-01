@@ -50,9 +50,9 @@ class ObjectConflictTest extends TestCase
         $this->assertEquals('300', $response->getCode());
         $this->assertTrue($response->hasSiblings());
         $this->assertNotEmpty($response->getSiblings());
-        $this->assertNotEmpty($response->getObject()->getVclock());
+        $this->assertNotEmpty($response->getRiakObject()->getVclock());
 
-        static::$vclock = $response->getObject()->getVclock();
+        static::$vclock = $response->getRiakObject()->getVclock();
     }
 
     /**
@@ -85,6 +85,6 @@ class ObjectConflictTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertEquals('some_resolved_data', $response->getObject()->getData());
+        $this->assertEquals('some_resolved_data', $response->getRiakObject()->getData());
     }
 }

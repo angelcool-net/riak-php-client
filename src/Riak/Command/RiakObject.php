@@ -10,7 +10,7 @@ use Basho\Riak\Location;
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-abstract class Object extends Command
+abstract class RiakObject extends Command
 {
     /**
      * @var Object\Response|null
@@ -29,7 +29,7 @@ abstract class Object extends Command
 
     protected $decodeAsAssociative = false;
 
-    public function getObject()
+    public function getRiakObject()
     {
         return $this->object;
     }
@@ -74,7 +74,7 @@ abstract class Object extends Command
     }
 
     /**
-     * @return Command\Object\Response
+     * @return Command\RiakObject\Response
      */
     public function execute()
     {

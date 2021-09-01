@@ -1,6 +1,6 @@
 <?php
 
-namespace Basho\Riak\Command\Object;
+namespace Basho\Riak\Command\RiakObject;
 
 use Basho\Riak\Command;
 
@@ -11,7 +11,7 @@ use Basho\Riak\CommandInterface;
  *
  * @author Christopher Mancini <cmancini at basho d0t com>
  */
-class FetchPreflist extends Command\Object implements CommandInterface
+class FetchPreflist extends Command\RiakObject implements CommandInterface
 {
     public function __construct(Command\Builder\FetchPreflist $builder)
     {

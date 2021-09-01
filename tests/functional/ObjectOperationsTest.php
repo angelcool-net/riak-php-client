@@ -83,9 +83,9 @@ class ObjectOperationsTest extends TestCase
         $response = $command->execute();
 
         $this->assertEquals('200', $response->getCode());
-        $this->assertInstanceOf('Basho\Riak\Object', $response->getObject());
-        $this->assertEquals('some_data', $response->getObject()->getData());
-        $this->assertNotEmpty($response->getObject()->getVclock());
+        $this->assertInstanceOf('Basho\Riak\Object', $response->getRiakObject());
+        $this->assertEquals('some_data', $response->getRiakObject()->getData());
+        $this->assertNotEmpty($response->getRiakObject()->getVclock());
 
         // confirm we are using the HTTP api bridge
         if (static::$riak->getApi() instanceof \Basho\Riak\Api\Http) {
@@ -95,7 +95,7 @@ class ObjectOperationsTest extends TestCase
             $this->assertNotEmpty(new \DateTime($headers["Last-Modified"]));
         }
 
-        static::$object = $response->getObject();
+        static::$object = $response->getRiakObject();
     }
 
     /**
@@ -200,8 +200,8 @@ class ObjectOperationsTest extends TestCase
 
         $response = $command->execute();
         $this->assertEquals('200', $response->getCode());
-        $this->assertEquals($data, $response->getObject()->getData());
-        $this->assertEquals('array', gettype($response->getObject()->getData()));
+        $this->assertEquals($data, $response->getRiakObject()->getData());
+        $this->assertEquals('array', gettype($response->getRiakObject()->getData()));
 
         // Fetch normal to get as stdClass object
         $command = (new Command\Builder\FetchObject(static::$riak))
@@ -210,6 +210,6 @@ class ObjectOperationsTest extends TestCase
 
         $response = $command->execute();
         $this->assertEquals('200', $response->getCode());
-        $this->assertEquals('object', gettype($response->getObject()->getData()));
+        $this->assertEquals('object', gettype($response->getRiakObject()->getData()));
     }
 }
