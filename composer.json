@@ -1,6 +1,6 @@
 {
-  "name": "basho/riak",
-  "description": "Official Riak client for PHP",
+  "name": "angelcool-net/riak-client",
+  "description": "Fork of the official basho/riak client that adds support for PHP 8 to GET and SET objects as needed, read PHP-8-NOTES.txt .",
   "type": "library",
   "keywords": [
     "basho",
@@ -12,7 +12,8 @@
     "kv",
     "datatype",
     "crdt",
-    "data"
+    "data",
+    "php8"
   ],
   "homepage": "http://basho.com/riak/",
   "license": "Apache-2.0",
