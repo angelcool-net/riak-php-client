@@ -1,3 +1,57 @@
 PHP-8 Update Notes:
 
 ->getObject() becomes ->getRiakObject()
+
+Tested with PHP 8.0.10
+
+Examples:
+
+use Basho\Riak as RiakClient;
+use Basho\Riak\Node;
+use Basho\Riak\Command;
+
+/*
+    Create Riak instance
+*/
+$node = (new Node\Builder)
+    ->atHost(IP_OR_HOSTNAME)
+    ->onPort(PORT)
+    ->build();
+
+$RiakInstance  = new RiakClient([$node]);
+
+/*
+    Set object
+*/
+$bucket = new RiakClient\Bucket(BUCKET_NAME);
+
+$location = new RiakClient\Location( KEY, $bucket);
+
+// store data
+$command = (new Command\Builder\StoreObject($RiakInstance))
+    ->buildJsonObject( [] )
+    ->atLocation( $location )
+    ->build();
+
+$command->execute();
+
+/*
+    Get object
+*/
+$bucket = new RiakClient\Bucket(BUCKET_NAME);
+
+$location = new RiakClient\Location( KEY, $bucket);
+
+// retrieve data
+$response = (new Command\Builder\FetchObject($RiakInstance))
+    ->atLocation($location)
+    ->withDecodeAsAssociative()
+    ->build()
+    ->execute();
+
+$response->getRiakObject()->getData();
+
+
+
+
+Best of luck!! -ac
